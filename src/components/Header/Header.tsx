@@ -1,6 +1,7 @@
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { NavLink, useLocation } from "react-router"
+import { useAppStore } from "../../stores/useAppStore";
 
 const Header = () => {
 
@@ -8,6 +9,14 @@ const Header = () => {
 
   const isHome = useMemo(() => pathname === '/', [pathname]);
 
+  const { fetchCategories } = useAppStore();
+
+ useEffect(() => {
+
+   fetchCategories();
+
+ }, [])
+ 
 
   return (
 

@@ -1,10 +1,17 @@
 
-import { NavLink } from "react-router"
+import { useMemo } from "react";
+import { NavLink, useLocation } from "react-router"
 
 const Header = () => {
+
+  const { pathname } = useLocation();
+
+  const isHome = useMemo(() => pathname === '/', [pathname]);
+
+
   return (
 
-    <header className='bg-slate-800'>
+    <header className={isHome ? 'bg-header bg-center bg-cover' : 'bg-slate-800'}>
       <div className="mx-auto container px-5 py-16">
         <div className="flex justify-between items-center">
           <div>
@@ -22,6 +29,40 @@ const Header = () => {
                 isActive ? 'text-orange-500 uppercase font-bold' : 'text-white uppercase font-bold '}>Favoritos</NavLink>
           </nav>
         </div>
+
+        {isHome && (
+          <form className="md:w-1/2 2xl:w-1/3 my-32 p-10 shadow bg-orange-600 rounded-xl space-y-6">
+            <div className="space-y-4">
+              <label
+                className="bloack text-white uppercase font-extrabold text-lg"
+                htmlFor="ingredient"> Nombre o Ingredientes
+              </label>
+              <input
+                id='ingredient'
+                type='text'
+                name='ingredient'
+                className="p-2 w-full rounded-lg focus:outline-none"
+                placeholder="Ej. Vodka, Mojito, Café" />
+            </div>
+            <div className="space-y-4">
+              <label
+                className="bloack text-white uppercase font-extrabold text-lg"
+                htmlFor="ingredient"> Categoria
+              </label>
+              <select
+                id='ingredient'
+                name='ingredient'
+                className="p-2 w-full rounded-lg focus:outline-none"
+              >
+                <option value="">---Seleccione ---</option>
+              </select>
+            </div>
+            <input
+              className="cursor-pointer text-white uppercase font-extrabold w-full p-3 rounded-xl bg-orange-800 hover:bg-orange-200"
+              type='submit'
+              value='Buscar' />
+          </form>
+        )}
       </div>
     </header>
   )

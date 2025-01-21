@@ -24,6 +24,7 @@ const Header = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
 
     e.preventDefault();
+
     setSearch({
       ...search,
       [e.target.name]: e.target.value

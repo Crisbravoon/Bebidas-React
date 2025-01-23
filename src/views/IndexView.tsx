@@ -12,9 +12,9 @@ const IndexView = () => {
 
   return (
     <>
-      <h1 className="text-6xl font-extrabold">Recetas</h1>
+      <h1 className="p-3 text-orange-600 text-6xl font-extrabold">Recetas</h1>
       {hasDrinks ?
-        <div className="grid grid-cols1 md:grid-cols-2 2xl:grid-cols-4 my-10 gap-10">
+        <div className="p-6 grid grid-cols1 md:grid-cols-2 2xl:grid-cols-4 my-10 gap-10">
           {drinks.drinks.map((drink) => (
             <DrinkCard
               key={drink.idDrink}

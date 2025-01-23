@@ -9,7 +9,7 @@ import Modal from "../components/Drink/Modal";
 
 const Layout = () => {
 
-  const { loadFromStorage, notification } = useAppStore();
+  const { loadFromStorage } = useAppStore();
 
   useEffect(() => {
     loadFromStorage();
